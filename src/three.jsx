@@ -293,7 +293,13 @@ verticesRef.current = null;
 
   return (
 
-<div style={{ display: "flex" }}>
+<div
+    style={{
+      display: "flex",
+      flexWrap: "nowrap",
+      height: "100vh",
+    }}
+  >
 
   <Sidebar
     showEdges={showEdges}
@@ -304,7 +310,13 @@ verticesRef.current = null;
     handleGravityToggle={handleGravityToggle}
   />
 
-  <div ref={refContainer} style={{ flex: 1 }}></div>
+  <div
+      ref={refContainer}
+      style={{
+        flex: 1,
+        minWidth: 0,
+      }}
+    ></div>
 
 </div>
 

@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-function Sidebar({ showEdges, setShowEdges, showVertices, setShowVertices,applyGravity, 
-  handleGravityToggle }) {
+function Sidebar({ showEdges, setShowEdges, showVertices, setShowVertices, applyGravity, handleGravityToggle }) {
+  const [isMobile, setIsMobile] = useState(false);
 
+  // Detect screen size
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    handleResize(); // initial check
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
     <div style={{
-      width: "200px",
+      width: isMobile ? "100%" : "200px",
       background: "#222",
       color: "white",
       padding: "15px",
-      height: "95vh"
+      height: "95vh",
+      fontSize: "14px"
     }}>
 
       <h3>You Can:</h3>
@@ -46,7 +54,8 @@ function Sidebar({ showEdges, setShowEdges, showVertices, setShowVertices,applyG
       </label>
 
     </div>
+    
   );
+  
 }
-
 export default Sidebar;
