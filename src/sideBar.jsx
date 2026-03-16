@@ -1,18 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
-function Sidebar({ showEdges, setShowEdges, showVertices, setShowVertices, applyGravity, handleGravityToggle }) {
-  const [isMobile, setIsMobile] = useState(false);
+function Sidebar({ showEdges, setShowEdges, showVertices, setShowVertices,applyGravity, 
+  handleGravityToggle }) {
 
-  // Detect screen size
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    handleResize(); // initial check
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
   return (
     <div style={{
-      width: isMobile ? "100%" : "200px",
+      width:"200px",
       background: "#222",
       color: "white",
       padding: "15px",
